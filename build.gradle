@@ -26,6 +26,10 @@ dependencies {
     compile 'org.testng:testng:+'
 }
 
+test {
+    useTestNG()
+}
+
 jar {
     from sourceSets.main.allJava
 }
