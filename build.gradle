@@ -13,9 +13,21 @@ repositories {
     mavenCentral()
 }
 
+configurations {
+    all {
+        resolutionStrategy.cacheDynamicVersionsFor 0, 'seconds'
+    }
+}
+
 dependencies {
+    compile 'com.beanstalk.json-wrapper:java-util:+'
+    compile 'com.beanstalk.java-util:java-util:+'
     compile 'com.google.code.gson:gson:+'
-    compile 'junit:junit:+'
+    compile 'org.testng:testng:+'
+}
+
+jar {
+    from sourceSets.main.allJava
 }
 
 uploadArchives {
