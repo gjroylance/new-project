@@ -20,10 +20,16 @@ configurations {
 }
 
 dependencies {
-    compile 'com.canopy.json-wrapper:java-wrapper:+'
-    compile 'com.canopy.java-util:java-util:+'
     compile 'com.google.code.gson:gson:+'
-    compile 'org.testng:testng:+'
+    testCompile 'org.testng:testng:+'
+
+    if (project.hasProperty('combined') && project.combined) {
+        compile project(':json-wrapper')
+        compile project(':java-util')
+    } else {
+        compile 'com.canopy.json-wrapper:json-wrapper:+'
+        compile 'com.canopy.java-util:java-util:+'
+    }
 }
 
 test {
