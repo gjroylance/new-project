@@ -10,3 +10,9 @@ sed "s/new-project/$1/g" settings.gradle > ../$1/settings.gradle
 mkdir -p ../$1/src/main/java ../$1/src/main/resources
 mkdir -p ../$1/src/test/java ../$1/src/test/resources
 
+cp ../vertx-shared/vertx.gradle .
+cp ../vertx-shared/gradle.properties .
+
+git init
+git commit -a -m "Initial $1 setup"
+git remote add origin https://github.com/CanopyTax/$1.git
