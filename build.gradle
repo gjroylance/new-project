@@ -24,9 +24,11 @@ dependencies {
     testCompile 'org.testng:testng:+'
 
     if (project.hasProperty('combined') && project.combined) {
+        compile project(':vertx-shared')
         compile project(':json-wrapper')
         compile project(':java-util')
     } else {
+        compile 'com.canopy.vertx-shared:vertx-shared:+'
         compile 'com.canopy.json-wrapper:json-wrapper:+'
         compile 'com.canopy.java-util:java-util:+'
     }
