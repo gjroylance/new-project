@@ -1,5 +1,13 @@
+buildscript {
+    repositories { jcenter() }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:1.+'
+    }
+}
+
 apply plugin: 'java'
 apply plugin: 'maven'
+apply plugin: 'com.github.johnrengelman.shadow'
 
 group = 'com.company-name.new-project'
 version = '1.0-SNAPSHOT'
@@ -20,7 +28,10 @@ configurations {
 }
 
 dependencies {
-    compile 'com.google.code.gson:gson:+'
+    compile "io.vertx:vertx-core:$vertxVersion"
+    compile "io.vertx:vertx-web:$vertxVersion"
+    compile "io.vertx:vertx-hazelcast:$vertxVersion"
+    compile "io.vertx:vertx-rx-java:$vertxVersion"
     testCompile 'org.testng:testng:+'
 
     if (project.hasProperty('combined') && project.combined) {
@@ -40,6 +51,17 @@ test {
 
 jar {
     from sourceSets.main.allJava
+}
+
+shadowJar {
+    classifier = 'fat'
+    manifest {
+        attributes 'Main-Class': 'io.vertx.core.Starter'
+        attributes 'Main-Verticle': 'com.canopy.service.WebsocketService'
+    }
+    mergeServiceFiles {
+        include 'META-INF/services/io.vertx.core.spi.VerticleFactory'
+    }
 }
 
 uploadArchives {
