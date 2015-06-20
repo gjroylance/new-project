@@ -1,0 +1,14 @@
+{
+  "main":"com.canopy.service.new-project",
+
+  "description":"A template module for creating vertx services",
+  "licenses": ["The Apache Software License Version 2.0"],
+  "author": "Gordon Roylance",
+
+  "developers": ["Gordon Roylance"],
+  "keywords": ["template", "project"],
+  "homepage": "canopytax.com",
+
+  "auto-redeploy": true
+
+}

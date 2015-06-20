@@ -11,6 +11,8 @@ sed "s/new-project/$1/g" settings.gradle > ../$1/settings.gradle
 mkdir -p ../$1/src/main/java ../$1/src/main/resources
 mkdir -p ../$1/src/test/java ../$1/src/test/resources
 
+sed "s/new-project/$1/g" mod.json > ../$1/src/main/java/resources/mod.json
+
 mkdir -p ../$1/src/main/java/com/canopy/service
 sed "s/XService/${name}Service/g" XService.java > ../$1/src/main/java/com/canopy/service/${name}Service.java
 
